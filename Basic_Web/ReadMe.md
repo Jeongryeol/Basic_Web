@@ -5,7 +5,7 @@
 >##### In this repo, I`ll share some contents using CSS, EasyUI, Ajax that base on HTML5, Javascript, gson & etc.
 >##### Please remind that these source code can be run in TomCat v8.5 server.
 
->###### If you had error on Libraries about jar files, 
+>###### If you had error on libraries about jar files, 
 >###### check your buildpath and reconnect jar files in the path ─ WebContent/WEB_INF/lib 
    
 >###### Thank you for reading my source-code.
