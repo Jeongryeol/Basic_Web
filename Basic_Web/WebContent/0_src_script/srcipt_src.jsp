@@ -8,14 +8,14 @@
 
 
 	<!-- css import code -->
-	<link rel="stylesheet" type="text/css" href="/1_JSP/_src_easyui/themes/default/easyui.css">
-	<link rel="stylesheet" type="text/css" href="/1_JSP/_src_easyui/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="/themes/icon.css">
 
 	<!-- jQuery script import code :: $-undifined error ÁÖÀÇ!!! -->
-	<script type="text/javascript" src="/2_JSP/_src_js/js/jquery-1.12.0.js"></script>
+	<script type="text/javascript" src=/js/jquery-1.12.0.js"></script>
 	
 	<!-- EasyUI for jQuery script import code -->
-	<script type="text/javascript" src="/2_JSP/_src_js/js/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.easyui.min.js"></script>
 
 
 </head>
