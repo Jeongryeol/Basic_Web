@@ -1,4 +1,4 @@
-package com.ch17.day01_console_browser;
+package com.jsp.day01_console_browser;
 
 import java.io.IOException;
 import java.io.PrintWriter;

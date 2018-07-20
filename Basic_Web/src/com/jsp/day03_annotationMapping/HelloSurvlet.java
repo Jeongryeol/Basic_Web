@@ -1,4 +1,4 @@
-package com.ch17.day03_annotationMapping;
+package com.jsp.day03_annotationMapping;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.omg.PortableInterceptor.ForwardRequest;
 
-import com.ch17.day01_console_browser.HelloServlet;
+import com.jsp.day01_console_browser.HelloServlet;
 import com.sun.istack.internal.logging.Logger;
-import com.util.Post_Hangul_Conversion;
+import util.web.Post_Hangul_Conversion;
 					//패턴경로의 가장 앞의 슬래쉬로 dev_jsp20180417 path로부터 출발한다는 의미를 내포함
 @WebServlet(urlPatterns = "/ch17/hello.dk")
 public class HelloSurvlet extends HttpServlet {
 
-	Logger logger = Logger.getLogger(HelloServlet.class);
+	Logger logger = Logger.getLogger(HelloSurvlet.class);
 	
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res)

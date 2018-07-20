@@ -1,4 +1,4 @@
-package com.ch17.day04_survlet_limit;
+package com.jsp.day04_survlet_limit;
 
 import java.util.ArrayList;
 import java.util.List;

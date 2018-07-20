@@ -42,7 +42,7 @@
 
   <servlet> <!-- DAY01 -->
      <servlet-name>first</servlet-name>
-     <servlet-class>com.ch17.day01.HelloServlet</servlet-class>
+     <servlet-class>com.jsp.day01_console_browser.HelloSurvlet</servlet-class>
   </servlet>
   <servlet-mapping>
      <servlet-name>first</servlet-name>
@@ -51,7 +51,7 @@
 <!-- ────────────────────────────────────────────────────────── -->
   <servlet> <!-- DAY02 -->
      <servlet-name>OrderServlet</servlet-name>
-     <servlet-class>com.ch17.day02.OrderSurvlet</servlet-class>
+     <servlet-class>com.jsp.day02_pageMove.OrderSurvlet</servlet-class>
   </servlet>
   <servlet-mapping>
      <servlet-name>OrderServlet</servlet-name>
@@ -61,7 +61,7 @@
 
   <servlet> <!-- DAY04 :: CRUD 분기를 위한 Servlet URL Mapping -->
      <servlet-name>boardServlet</servlet-name>
-     <servlet-class>com.ch17.day04_survlet_limit.BoardSurvlet</servlet-class>
+     <servlet-class>com.jsp.day04_survlet_limit.BoardSurvlet</servlet-class>
   </servlet>
   <servlet-mapping>
      <servlet-name>boardServlet</servlet-name>

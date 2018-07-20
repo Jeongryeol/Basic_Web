@@ -1,4 +1,4 @@
-package com.ch17.day04_survlet_limit;
+package com.jsp.day04_survlet_limit;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -45,16 +45,16 @@ public class BoardSurvlet extends HttpServlet {
 	{
 		logger.info("doGet() 메소드 호출 성공");
 
-		//URL매핑  http://IP:Port/dev_jsp20180417/ch17/crud?command=select|insert|update|delete
+		//URL매핑  http://IP:Port/Basic_Web/ch17/crud?command=select|insert|update|delete
 		//'query/String'을 URL 끝에 넣어서 확인합니다.
 		/*
 		 * 	어노테이션을 통해 URL매핑된 이 서블릿클래스를 실행하고,
 		 * 	URL끝의(..do?command=______) 'query/String'을 변경해서 구현결과를 확인해보세요.
 		 * 
-		 * 	http://localhost:9000/dev_jsp20180417/ch17/crud.do?command=select
-		 * 	http://localhost:9000/dev_jsp20180417/ch17/crud.do?command=insert
-		 * 	http://localhost:9000/dev_jsp20180417/ch17/crud.do?command=update
-		 * 	http://localhost:9000/dev_jsp20180417/ch17/crud.do?command=delete
+		 * 	http://localhost:9000/Basic_Web/ch17/crud.do?command=select
+		 * 	http://localhost:9000/Basic_Web/ch17/crud.do?command=insert
+		 * 	http://localhost:9000/Basic_Web/ch17/crud.do?command=update
+		 * 	http://localhost:9000/Basic_Web/ch17/crud.do?command=delete
 		 * 
 		 */
 		
@@ -107,49 +107,4 @@ public class BoardSurvlet extends HttpServlet {
 			out.println("</body></html>");
 		}
 	}
-	
-/*	서버(톰켓)의 객체주입이 되지않기때문에 안됨
-	//조회을 수행할 메소드
-	public void select(HttpServletRequest req) {
-		//여기서 DB연동
-		//결과를 리턴??? 
-	}
-	
-	//입력을 수행할 메소드
-	public void insert(HttpServletRequest req) {
-		
-	}
-	
-	//수정을 수행할 메소드
-	public void update(HttpServletRequest req) {
-		
-	}
-	
-	//입력을 수행할 메소드
-	public void delete(HttpServletRequest req) {
-		
-	}
-	
-	
-	@Override
-	public void doGet(HttpServletRequest req, HttpServletResponse res)
-				throws ServletException, IOException{
-		int num = req.hashCode();
-		
-		switch(num) {
-		case 1 : select(req);
-		case 2 : insert(req);
-		case 3 : update(req);
-		case 4 : delete(req);
-		}
-		
-	}
-	
-	@Override
-	public void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-
-	}
-	
- */
 }

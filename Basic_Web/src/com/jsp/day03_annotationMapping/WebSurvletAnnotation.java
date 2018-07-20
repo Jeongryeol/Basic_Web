@@ -1,4 +1,4 @@
-package com.ch17.day03_annotationMapping;
+package com.jsp.day03_annotationMapping;
 
 import java.io.IOException;
 import java.io.PrintWriter;
