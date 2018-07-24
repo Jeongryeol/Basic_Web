@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deptLists>
+	<deptList>
+		<deptno>10</deptno>
+		<dname>영업</dname>
+		<loc>서울</loc>
+	</deptList>
+	<deptList>
+		<deptno>20</deptno>
+		<dname>총무</dname>
+		<loc>인천</loc>
+	</deptList>
+	<deptList>
+		<deptno>30</deptno>
+		<dname>인사</dname>
+		<loc>서울</loc>
+	</deptList>
+</deptLists>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<records>
+	<record>
+		<id>1</id>
+		<title>xml은 열고 닫는 트리구조를 확실하게 규명해야합니다.</title>
+		<content>이클립스가 컴파일을 선행하고, 브라우저도 컴파일을 진행합니다.</content>
+		<comment>DB의 데이터를 직접적으로 외부에 공개하는것이 껄끄러울때 XML을 이용합니다.</comment>
+	</record>
+</records>

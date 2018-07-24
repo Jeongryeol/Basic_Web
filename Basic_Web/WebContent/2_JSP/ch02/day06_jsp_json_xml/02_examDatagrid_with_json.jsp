@@ -4,18 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>주석</title>
-
-<!-- ―――[[HEAD style]]――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― -->
-<style type="text/css">
-
-</style>
+<title>json포맷을 받아서 표로 출력하는 EasyUI예제 :: Datagrid</title>
 
 <!-- ―――[[ import ]]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― -->
 
 	<!-- css import code -->
 	<link rel="stylesheet" type="text/css" href="/themes/default/easyui.css">
-	<link rel="stylesheet" type="text/css" href="/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="/themes/icon.css?1">
+	<link rel="stylesheet" type="text/css" href="/demo/demo.css">
 
 	<!-- jQuery script import code :: $-undifined error 주의!!! -->
 	<script type="text/javascript" src="/js/jquery-1.12.0.js"></script>
@@ -23,24 +19,21 @@
 	<!-- EasyUI for jQuery script import code -->
 	<script type="text/javascript" src="/js/jquery.easyui.min.js"></script>
 
-
-<!-- ―――[[HEAD script]]――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― -->
-<script type="text/javascript">
-
-</script>
 </head>
 <!--
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 -->
 <body>
-<!-- ―――[[BODY script]]――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― -->
-<script type="text/javascript">
-
-</script>
 <!-- ―――[[BODY content]]――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― -->
-
-<!-- ―――[[form OPEN ]]――― -->
-
-<!-- ―――[[form CLOSE ]]――― -->
+	<table id="dg_dept" class="easyui-datagrid" style="width:400px;height:250px"
+        data-options="url:'jsonExample.jsp',fitColumns:true,singleSelect:true">
+	<thead>
+		<tr>
+			<th data-options="field:'deptno',width:100">부서번호</th>
+			<th data-options="field:'dname',width:100">부서명</th>
+			<th data-options="field:'loc',width:100">지역</th>
+		</tr>
+	</thead>	
+	</table>
 </body>
 </html>
