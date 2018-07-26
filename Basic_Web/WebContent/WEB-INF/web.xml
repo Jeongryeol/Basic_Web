@@ -21,7 +21,18 @@
   		  반드시 src폴더에 log4j.properties 저장
   		  	  lib폴더에 log4j-1.2.15.jar를 저장합니다. -->
   </context-param>  
-  
+ 
+<!-- 	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+		[ ▽ ▽ ▽ [ MyBatis jar file resource mapping ] ▽ ▽ ▽ ]
+		■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■	-->
+
+	<resource-ref>
+		<description>Connection</description>
+		<res-ref-name>jdbc/dbPool</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+     
 <!-- 	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 		[ ▽ ▽ ▽ [ Servlet URL Pattern Mapping ex] ▽ ▽ ▽ ]
 		■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■		-->
