@@ -20,14 +20,14 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
 
-import util.db_mybatis.DBConnection_MyBatis;
+import util.db_mybatis.DBConnection;
 
 public class BasicDAO_MyBatis {
 	/*선언부*/
 	//Console창에 로그찍기
 	Logger logger = Logger.getLogger(BasicDAO_MyBatis.class);
 	//DB연결하기
-	DBConnection_MyBatis dbcon	= null; //DB연결 공통클래스
+	DBConnection dbcon	= null; //DB연결 공통클래스
 	SqlSession		  sqlSes	= null;	//연결에 대한 모든 정보가 담긴 객체
 	/*********************************************************
 	 * [[ MapperConfig.xml 의 역할 ]]
@@ -55,7 +55,7 @@ public class BasicDAO_MyBatis {
 	 ********************************************************************/
 	public List<Map<String,Object>> getDataList(int param_num){
 		logger.info("getDataList 호출 성공");
-		dbcon  = new DBConnection_MyBatis();//DB연결 공통클래스 인스턴스변수
+		dbcon  = new DBConnection();//DB연결 공통클래스 인스턴스변수
 		sqlSes = dbcon.getConnection();		//연결객체 갱성
 		
 		//DB에서 조회한 결과를 반환하기 위한 List자료형

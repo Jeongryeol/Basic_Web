@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="util.db_mybatis.mapper.pojoDemo.member">
+<!-- ───────[ SELECT ]─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+	<!-- 로그인 :: 아이디체크/비밀번호체크/회원명 반환 (일괄처리)  -->
+	<select id="memberLogin" parameterType="map" resultType="map">
+	  select
+	    case(nvl((select 
+	                case (select nvl((select 1 from dual
+	                				   where EXISTS (select mem_no from member
+	                								  where mem_id=#{mem_id})),-1) from dual)<!-- 아이디있음:1 / 없음:null >> -1 -->
+	                when -1 then -1<!-- -1(아이디틀림)은 -1로 치환 -->
+	                when  1 then (select 2 from member
+	                   			   where mem_id = #{mem_id}
+	                   			     and mem_pw = #{mem_pw})<!-- 1(아이디있음)은 SQL로 치환 >> 비밀번호 맞음:2 / 틀림:null -->
+	                end
+	              from dual),1))<!-- null(아이디만 맞음)은 1로 치환  -->
+	    when -1 then 'The ID does not exist'	<!-- -1(아이디없음)은 아이디가 없다는 문구로 반환 -->
+	    when  1 then 'Passwords do not match'	<!--  1(아이디만 맞음)는 비밀번호가 일치하지 않는다고 반환-->
+	    when  2 then (select mem_name from member
+	      			   where mem_id = #{mem_id}
+	       				 and mem_pw = #{mem_pw})	<!-- 2(아이디,비밀번호 둘다맞음)를 회원아이디, 회원명으로 치환-->
+	    end as "resultOut"
+	  from dual
+	  <!--
+	  		최종결과 컬럼명 : resultOut
+	  		a) 'The Id does not exist' 	//아이디 자체가 없는 경우 [-1]
+	  		b) 'Passwords do not match'	//아이디만 맞음(비밀번호가 틀린 경우) [1]
+	  		c) 'mem_name'				//아이디,비밀번호가 모두 일치하는경우 [2]
+	   -->
+	</select>
+	<!-- 아이디 중복검사 (기본값:-2) -->
+	<select id="memberIdExist" parameterType="string" resultType="int">
+		<!-- 아이디 중복됨 : 1 / 없을때(null):-1 -->
+		SELECT NVL((SELECT 2 as status FROM dual
+ 		 WHERE EXISTS (SELECT mem_no FROM member
+						WHERE mem_id = #{mem_id} AND rownum = 1)),-1) status
+		  FROM dual
+	</select>
+	<!-- 임시비밀번호 발번 -->
+	<select id="getTempPW" parameterType="java.lang.String" resultType="java.lang.String">
+	SELECT translate((SELECT mem_pw FROM member WHERE mem_id=#{mem_id})
+                	 ,'abcdefghijklmnopqrstuvwxyz012345679!@#$%^*()-_+=?'
+                	 ,'1472583690159263487068572435910142536748596986532') as "TempPW"
+	  FROM dual
+	</select>
+<!-- ───────[ INSERT ]─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+	<!-- 회원가입  -->
+	<insert id="memberSignup" parameterType="map">
+		INSERT INTO member(mem_no, mem_id, mem_pw, mem_nap)
+		VALUES(seq_member_no.nextval, #{mem_id}, #{mem_pw}, #{mem_name}) 
+	</insert>
+</mapper>
