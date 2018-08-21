@@ -33,6 +33,7 @@ public class DemoMemberLogic {
 	}
 	
 	//아이디중복검사
+	//public int 
 
 //----------------------------[ INSERT ]----------------------------
 	

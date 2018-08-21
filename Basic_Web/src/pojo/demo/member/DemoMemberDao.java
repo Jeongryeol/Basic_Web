@@ -41,8 +41,8 @@ public class DemoMemberDao{
 	public int memberIdExist(String mem_id) {
 		logger.info("		[[ MemberDao ]] memberIdExist 호출성공 - Dao계층 진입성공!");
 		int status = -2;//초기값
-		status = sqlSes.insert("memberIdExist", mem_id);
-		logger.info("		[[ MemberDao ]] status = "+status+" >> 초기값=-2, 중복=2,없음=-1");
+		status = sqlSes.selectOne("memberIdExist", mem_id);
+		logger.info("		[[ MemberDao ]] sta tus = "+status+" >> 초기값=-2, 중복=2,없음=-1");
 		return status;
 	}
 	

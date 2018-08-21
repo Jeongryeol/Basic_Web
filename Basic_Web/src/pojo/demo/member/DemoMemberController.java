@@ -106,8 +106,15 @@ public class DemoMemberController implements DemoFrame{
 			//URL패턴 : /Basic_Web/5_Framework/pojo/demo/member/select/check_ID_Overlap.demo" ]]
 			else if("check_ID_Overlap.demo".equals(chop)) {
 				logger.info("	[[ Member.C ]] id overlap check :: 아이디 중복검사 조회 시작");
-				String u_id = req.getParameter("mem_id");//요청객체로부터 넘어온 ID 발췌
-				logger.info("	[[ Member.C ]] req.getParameter(\"mem_id\") = "+u_id);
+				String mem_id = req.getParameter("mem_id");//요청객체로부터 넘어온 ID 발췌
+				logger.info("	[[ Member.C ]] req.getParameter(\"mem_id\") = "+mem_id);
+				
+				//암호모듈 적용하기 : Base64
+				sb = new Secure_Base64();//암호모듈 생성
+				String sec_mem_id = sb.changeBase64(mem_id);
+				logger.info("	[[ Member.C ]] sec_mem_id = "+sec_mem_id);
+				
+				demoList = new DemoMemberLogic().memberLogin(pMap);	//Logic계층에 pMap으로 돌려받은 결과값 저장
 				
 				//케리어에 정보세팅
 				isRedirect = true;

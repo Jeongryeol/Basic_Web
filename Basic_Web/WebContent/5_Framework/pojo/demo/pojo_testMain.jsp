@@ -86,8 +86,6 @@
 <div>
 	<h1>POJO Framework Example</h1>
 	<h3>&nbsp;로그인 테스트</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<b>URL-Pattern</b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<br>
 </div>
 <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<input type="button" value=" 로그인페이지 이동 " onclick="javascript:location.href='./member/pojo_login.jsp'" />

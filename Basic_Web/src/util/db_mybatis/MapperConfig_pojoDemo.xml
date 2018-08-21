@@ -4,6 +4,9 @@
  "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <!-- MyBatis Manual page 3 -->
 <configuration>
+	<settings><!-- LOG4J를 도와주는 세팅 -->
+		<setting name="logImpl" value="LOG4J"/>
+	</settings>
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC" />
