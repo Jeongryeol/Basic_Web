@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ page import="java.util.List, java.util.Map" %>
-<%-- src.util.db_mybatis.maps.BasicQuery.xml 파일의 id 값을 아래 Bean액션태그에 입력함 --%>
-<jsp:useBean id="testMapSelect" scope="request" class="com.ajax.mybatis.BasicDAO_MyBatis"/>
+<%-- src.util.db_mybatis._sample.mapper.SampleQuery.xml 파일의 id 값을 아래 Bean액션태그에 입력함 --%>
+<jsp:useBean id="testMapSelect" scope="request" class="com.mybatis.Sample_DAO_MyBatis"/>
 <%=
 	"<b>@title</b>	MyBatis를 활용하여 CRUD 수행 및 리턴하기"+
 "<br><b>@date</b>	2018.07.26"+

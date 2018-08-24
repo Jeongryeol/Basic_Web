@@ -1,4 +1,4 @@
-package com.ajax.mybatis;
+package com.mybatis;
 /***************************************************************
  * @title	MyBatis를 활용하여 CRUD 수행 및 리턴하기
  * @date	2018.07.26
@@ -6,10 +6,10 @@ package com.ajax.mybatis;
  * @email	duxbellorn@gmail.com
  * @comment
  * 	반드시 아래 두 경로의 작업을 마친 후 실행합니다.
- * 	1)src.util.db_mybatis.maps 에 쿼리문을 저장한 xml매퍼문서 저장하기
- * 		예) 파일명 : abcd1234.xml
- * 	2)rc.util.db_mybatis에 MapperConfig.xml에 문서매퍼 등록하기
- * 		예) <mapper resource="com/mybatis/maps/abcd1234.xml"/>
+ * 	1)src.util.db_mybatis._sample.mapper.SampleQuery.xml 에 쿼리문을 기록하여 xml매퍼문서 저장하기
+
+ * 	2)src.util.db_mybatis._sample.MapperConfig_sample.xml에 문서매퍼 등록하기
+ * 		<mapper resource="util/db_mybatis/_sample/mapper/SampleQuery.xml"/>
  * 
  * 	이 작업과정에서 오류가 발생하면 웹 기동에 문제가 생겨서 404번 에러가 나타나니 주의바랍니다.
  ***************************************************************/
@@ -17,18 +17,17 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
 
-import util.db_mybatis.DBConnection;
+import util.db_mybatis._sample.DBConnection_sample;
 
-public class BasicDAO_MyBatis {
+public class Sample_DAO_MyBatis {
 	/*선언부*/
 	//Console창에 로그찍기
-	Logger logger = Logger.getLogger(BasicDAO_MyBatis.class);
+	Logger logger = Logger.getLogger(Sample_DAO_MyBatis.class);
 	//DB연결하기
-	DBConnection dbcon	= null; //DB연결 공통클래스
-	SqlSession		  sqlSes	= null;	//연결에 대한 모든 정보가 담긴 객체
+	DBConnection_sample dbcon	= null; //DB연결 공통클래스
+	SqlSession	 sqlSes	= null;	//연결에 대한 모든 정보가 담긴 객체
 	/*********************************************************
 	 * [[ MapperConfig.xml 의 역할 ]]
 	 * 	ORM솔루션 중 하나인 MyBatis를 통해서  물리적으로 떨어진 오라클DB와 연결을 맺고
@@ -55,7 +54,7 @@ public class BasicDAO_MyBatis {
 	 ********************************************************************/
 	public List<Map<String,Object>> getDataList(int param_num){
 		logger.info("getDataList 호출 성공");
-		dbcon  = new DBConnection();//DB연결 공통클래스 인스턴스변수
+		dbcon  = new DBConnection_sample();//DB연결 공통클래스 인스턴스변수
 		sqlSes = dbcon.getConnection();		//연결객체 갱성
 		
 		//DB에서 조회한 결과를 반환하기 위한 List자료형

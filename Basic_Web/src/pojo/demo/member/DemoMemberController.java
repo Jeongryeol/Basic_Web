@@ -80,23 +80,24 @@ public class DemoMemberController implements DemoFrame{
 					path = "./pojo_mem_login_fail.jsp";//실패페이지
 					demoList = null;
 					status = -1;
-					cm.setCookie("logOnStatus", "-1");//쿠키로 에러코드 넘기기
+					cm.setCookie("logOnStatus", String.valueOf(status));
 					
 				} else if("Passwords do not match".equals(resultOut)){//비밀번호틀림
 					isRedirect = false;//포워딩
 					path = "./pojo_mem_login_fail.jsp";//실패페이지
 					demoList = null;
 					status = -2;
-					cm.setCookie("logOnStatus", "-2");//쿠키로 에러코드 넘기기
+					cm.setCookie("logOnStatus", String.valueOf(status));
 					
-				} else if(resultOut!=null) {//
+				} else if(!"The ID does not exist".equals(resultOut)
+						&&!"Passwords do not match".equals(resultOut)) {//로그인에 성공한 경우
 					isRedirect = true;//리다이텍트
 					path = "./pojo_mem_login_success.jsp";
 					status = 2;
-					cm.setCookie("logOnStatus", "-2");//쿠키로 에러코드 넘기기
+					cm.setCookie("logOnStatus", String.valueOf(status));//로그인 성공
 					cm.setCookie("mem_name",resultOut);//쿠키로 사용자 이름 넘기기
 					
-				} else 
+				} else //기타에러상황
 					logger.info("	[[ Member.C ]] 에러~~에러~~에러~~에러~~에러~~에러~~");
 				
 				setPageCarrier(isRedirect, path, demoList, status);//케리어에 정보세팅

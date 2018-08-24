@@ -4,21 +4,24 @@
  "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <!-- MyBatis Manual page 3 -->
 <configuration>
+	<settings><!-- LOG4J를 도와주는 세팅 -->
+		<setting name="logImpl" value="LOG4J"/>
+	</settings>
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC" />
 			<dataSource type="UNPOOLED"><!-- POOL|UNPOOLED -->
 				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
 				<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl11" />
-				<property name="username" value="scott" />
-				<property name="password" value="tiger" />
+				<property name="username" value="jsp" />
+				<property name="password" value="1234" />
 			</dataSource>
 		</environment>
 	</environments>
 	<mappers>
 		<!-- src위치는 알기 때문에 이후 경로 씀 / 쿼리문을 담고있는 xml문서의 물리적인 위치 -->
 		<!-- 반드시 경로 및 파일존재확인할것. FileNotFoundException 발생하고 서버기동이 안될수 있음 -->
-		<mapper resource="util/db_mybatis/mapper/BasicQuery.xml"/>
+		<mapper resource="util/db_mybatis/demo/mapper/DemoMember.xml"/>
 	</mappers>
 </configuration>
 <!--

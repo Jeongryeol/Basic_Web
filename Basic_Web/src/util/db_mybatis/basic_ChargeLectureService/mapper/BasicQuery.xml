@@ -13,16 +13,13 @@
 		selectOne("id",parameterType p_name) :resultType r_name
 		selectList("id",parameterType p_name):resultType r_name
  -->
-<mapper namespace="util.db_mybatis.mapper.BasicMapper">
-	<select id="testSelect_id"
-			parameterType="int"
+<mapper namespace="util.db_mybatis.basic_ChargeLectureService.mapper.BasicQeury">
+	<select id="idOverlap"
+			parameterType="map"
 			resultType="java.util.Map">
 		SELECT
-			 empno "사원번호"
-			,ename "사원명"
-			,sal "연봉"
-			,comm "인센티브"
+			 NVL2(ename,1,-1) as "result"
 		  FROM emp
-		 WHERE empno>=#{param_num} 	<!-- param_text는 Map의 값 -->
+		 WHERE ename = UPPER(#{mem_id})
 	</select>
 </mapper>
