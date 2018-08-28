@@ -18,8 +18,6 @@ import org.apache.log4j.Logger;
 /*****************************************************************************************
  * [[[ Cookie Manager ]]]
  * @version
- * 		<br>1.5
- * 		<br>▷ bindCookies
  * 		<br>1.4
  * 		<br>▷ isNumber() 추가 : 실수 및 음수에 대한 문자열 확인+인코딩+디코딩 외 일부 수정
  * 		<br>1.3
@@ -128,10 +126,10 @@ public class CookieMgr {
 	public boolean checkCookie(String targetCookieName) {
 		boolean isExist = cookieMap.get(targetCookieName)!=null;//들어있으면 true, 없으면 false
 		if(isExist) {
-			logger.info("[[쿠키로그]] checkCookie : "+isExist+" | '"+targetCookieName+"' 라는 쿠키는 존재합니다");
+			logger.info("	[[쿠키매니저]] checkCookie : "+isExist+" | '"+targetCookieName+"' 라는 쿠키는 존재합니다");
 			return isExist;
 		}
-		logger.info("[[쿠키로그]] checkCookie : "+isExist+" | '"+targetCookieName+"' 라는 쿠키는 찾을 수 없네요");
+		logger.info("	[[쿠키매니저]] checkCookie : "+isExist+" | '"+targetCookieName+"' 라는 쿠키는 찾을 수 없네요");
 		return isExist;
 	}
 	
@@ -191,7 +189,7 @@ public class CookieMgr {
 		cookie.setMaxAge(maxAge);//유효시간설정
 		res.addCookie(cookie);//응답객체에 담음
 		cookieMap.put(cookie.getName(),cookie);//맵에 담음
-		logger.info("[[ 쿠키매니저 ]] 쿠키가 응답객체에 담겼습니다. / "+cookieName+":"+value+"			※참고-모든쿠키보기 : showAllCookie_console();");
+		logger.info("	[[ 쿠키매니저 ]] 쿠키가 응답객체에 담겼습니다. / "+cookieName+":"+value+"			※참고-모든쿠키보기 : showAllCookie_console();");
 		showAllCookie_console();
 	}
 	/*******************************************************************
@@ -210,7 +208,7 @@ public class CookieMgr {
 		cookie.setPath(path);//경로설정
 		res.addCookie(cookie);//응답객체에 담음
 		cookieMap.put(cookie.getName(),cookie);//맵에 담음
-		logger.info("[[ 쿠키매니저 ]] 쿠키가 응답객체에 담겼습니다. / "+cookieName+":"+value+"			※참고-모든쿠키보기 : showAllCookie_console();");
+		logger.info("	[[ 쿠키매니저 ]] 쿠키가 응답객체에 담겼습니다. / "+cookieName+":"+value+"			※참고-모든쿠키보기 : showAllCookie_console();");
 		showAllCookie_console();
 	}
 	
@@ -224,7 +222,7 @@ public class CookieMgr {
 	 *******************************************************************/
 	public Cookie getCookie(String targetCookieName){
 		Cookie ckAddr = cookieMap.get(targetCookieName);
-		logger.info("[[ 쿠키매니저 ]] getCookie = "+ckAddr);
+		logger.info("	[[ 쿠키매니저 ]] getCookie = "+ckAddr);
 		return ckAddr;
 	}
 	/*******************************************************************
@@ -237,17 +235,17 @@ public class CookieMgr {
 		if(cookie!=null) {
 			if(isNumber(targetCookieName)) {//숫자면 디코딩은 안합니다.
 				String ckValue = cookie.getValue();
-				logger.info("[[ 쿠키매니저 ]] getCookieValue = "+ckValue);
+				logger.info("	[[ 쿠키매니저 ]] getCookieValue = "+ckValue);
 				return ckValue;
 			}else {//문자일때 디코딩합니다.
 				String ckValue = URLDecoder.decode(cookie.getValue(),"UTF-8");
-				logger.info("[[ 쿠키매니저 ]] getCookieValue = "+ckValue);
+				logger.info("	[[ 쿠키매니저 ]] getCookieValue = "+ckValue);
 				return ckValue;
 			}
 		} else {
-			logger.info("[[ 쿠키매니저 ]] 읽은 내역이 없습니다 / targetCookieName = "+targetCookieName);
+			logger.info("	[[ 쿠키매니저 ]] 읽은 내역이 없습니다 / targetCookieName = "+targetCookieName);
 		}
-		logger.info("[[ 쿠키매니저 ]] 값 읽기 실패했습니다.  null을 반환합니다.");
+		logger.info("	[[ 쿠키매니저 ]] 값 읽기 실패했습니다.  null을 반환합니다.");
 		return null;
 	}
 	/*******************************************************************
@@ -257,21 +255,21 @@ public class CookieMgr {
 	 *******************************************************************/
 	public String getCookieNameFromValue(String targetCookieValue) throws IOException{
 		if(targetCookieValue==null) {
-			logger.info("[[ 쿠키매니저 ]] 찾고자 하는 쿠키의 값이 비어있습니다.(null) 다시확인해주세요. ");
+			logger.info("	[[ 쿠키매니저 ]] 찾고자 하는 쿠키의 값이 비어있습니다.(null) 다시확인해주세요. ");
 			return null;
 		} else {
-			logger.info("[[ 쿠키매니저 ]] 쿠키를 검색합니다. / 대상 쿠키값 = "+targetCookieValue);
+			logger.info("	[[ 쿠키매니저 ]] 쿠키를 검색합니다. / 대상 쿠키값 = "+targetCookieValue);
 		}
 		String getCookieValue = null; 
 		for (Entry<String, Cookie> entry : cookieMap.entrySet()) {
 			getCookieValue = entry.getValue().getValue();//쿠키맵에서 읽어낸 쿠키값
 			if(targetCookieValue.equals(getCookieValue)){
 				String getCookieName = entry.getValue().getName().toString();
-				logger.info("[[ 쿠키매니저 ]] 쿠키가 검색되었습니다. / 검색 쿠키이름 = "+getCookieName);
+				logger.info("	[[ 쿠키매니저 ]] 쿠키가 검색되었습니다. / 검색 쿠키이름 = "+getCookieName);
 				return entry.getKey();
 			}
 		}
-		logger.info("[[ 쿠키매니저 ]] 쿠키검색결과가 없습니다.");
+		logger.info("	[[ 쿠키매니저 ]] 쿠키검색결과가 없습니다.");
 		return null;
 	}
 	
@@ -287,10 +285,10 @@ public class CookieMgr {
 	public int changeCookieValue(String targetCookieName, String newValue) throws IOException {
 		if(checkCookie(targetCookieName)) {
 			setCookie(targetCookieName,newValue);
-			logger.info("[[ 쿠키매니저 ]] 변경내역 / targetCookieName = "+targetCookieName+"/ newValue : "+newValue);
+			logger.info("	[[ 쿠키매니저 ]] 변경내역 / targetCookieName = "+targetCookieName+"/ newValue : "+newValue);
 			return 1;//변경결과를 콘솔창에 출력하고 변경결과를 1로 반환함
 		} else {
-			logger.info("[[ 쿠키매니저 ]] 변경내역이 없습니다 / targetCookieName = "+targetCookieName);
+			logger.info("	[[ 쿠키매니저 ]] 변경내역이 없습니다 / targetCookieName = "+targetCookieName);
 		}
 		return 0;//실패한 변경결과를 콘솔창에 출력하고 변경결과를 0으로 반환함
 	}
@@ -310,10 +308,10 @@ public class CookieMgr {
 			cookie_del = new Cookie(targetCookieName,"");
 			cookie_del.setMaxAge(0);
 			res.addCookie(cookie_del);
-			logger.info("[[ 쿠키매니저 ]] '"+targetCookieName+"' 쿠키를 삭제했습니다.");
+			logger.info("	[[ 쿠키매니저 ]] '"+targetCookieName+"' 쿠키를 삭제했습니다.");
 			return 1;//대상쿠키가 존재하면 삭제후 로그출력 및 1을 반환
 		} else {
-			logger.info("[[ 쿠키매니저 ]] '"+targetCookieName+"' 쿠키는 없습니다. 삭제에 실패했습니다.");
+			logger.info("	[[ 쿠키매니저 ]] '"+targetCookieName+"' 쿠키는 없습니다. 삭제에 실패했습니다.");
 		}
 		return 0;//대상쿠키가 존재하지 않으면 삭제에 실패하고  로그출력 및 0을 반환
 	}
@@ -333,10 +331,10 @@ public class CookieMgr {
 		if(cookie_age!=null) {
 			cookie_age.setMaxAge(second);
 			res.addCookie(cookie_age);
-			logger.info("[[ 쿠키매니저 ]] '"+targetCookieName+"' 쿠키의 변경된 유효시간 : "+cookie_age.getMaxAge());
+			logger.info("	[[ 쿠키매니저 ]] '"+targetCookieName+"' 쿠키의 변경된 유효시간 : "+cookie_age.getMaxAge());
 			return 1;//대상 쿠키가 존재하면 유효시간 변경후 1을 반환
 		} else {
-			logger.info("[[ 쿠키매니저 ]] '"+targetCookieName+"' 쿠키는 없습니다.");
+			logger.info("	[[ 쿠키매니저 ]] '"+targetCookieName+"' 쿠키는 없습니다.");
 		}
 		return 0;//대상 쿠키가 존재하지 않으면 0을 반환
 	}
@@ -348,7 +346,7 @@ public class CookieMgr {
 	public int getCookieAge(String targetCookieName) {
 		Cookie cookie = cookieMap.get(targetCookieName);//쿠키맵에서 해당쿠키얻음
 		int ckAge = cookie.getMaxAge();//설정된 유효시간을 반환
-		logger.info("[[ 쿠키매니저 ]] '"+targetCookieName+"' 쿠키의 유효시간 : "+ckAge);
+		logger.info("	[[ 쿠키매니저 ]] '"+targetCookieName+"' 쿠키의 유효시간 : "+ckAge);
 		return ckAge;//설정된 유효시간을 반환
 	}
 	
@@ -367,10 +365,10 @@ public class CookieMgr {
 		if(cookie_path!=null) {
 			cookie_path.setPath(path);
 			res.addCookie(cookie_path);
-			logger.info("[[ 쿠키매니저 ]] '"+targetCookieName+"' 쿠키의 변경된 경로 : "+cookie_path.getPath());
+			logger.info("	[[ 쿠키매니저 ]] '"+targetCookieName+"' 쿠키의 변경된 경로 : "+cookie_path.getPath());
 			return 1;//대상 쿠키가 존재하면 유효시간 변경후 1을 반환
 		} else {
-			logger.info("[[ 쿠키매니저 ]] '"+targetCookieName+"' 쿠키는 없습니다.");
+			logger.info("	[[ 쿠키매니저 ]] '"+targetCookieName+"' 쿠키는 없습니다.");
 		}
 		return 0;//대상쿠키가 존재하지 않으면 0을 반환
 	}
@@ -382,7 +380,7 @@ public class CookieMgr {
 	public String getCookiePath(String targetCookieName) {
 		Cookie cookie_Path = cookieMap.get(targetCookieName);//쿠키맵에서 해당쿠키얻음
 		String ckPath = cookie_Path.getPath();//설정된 쿠키저장경로를 반환
-		logger.info("[[ 쿠키매니저 ]] '"+targetCookieName+"' 쿠키의 경로 : "+ckPath);
+		logger.info("	[[ 쿠키매니저 ]] '"+targetCookieName+"' 쿠키의 경로 : "+ckPath);
 		return ckPath;//설정된 쿠키저장경로를 반환
 	}
 	
@@ -415,21 +413,5 @@ public class CookieMgr {
 			}
 	    }
 	    return result;
-	}
-	
-	
-	/**
-	 * [[ 특정 문자열을 포함하는 쿠키를 맵에 담아 반환하기 ]]
-	 * @param	certainName : 쿠키이름 검색에 사용할 조건문자열
-	 * @return	rCkMap : 조건에 해당하는 쿠키맵
-	 */
-	public Map<String,Cookie> addCookieBasket(String certainName){
-		List<Cookie> ckList = new ArrayList<>();
-		for(String cookieName : cookieMap.keySet()) {
-			if(cookieName.contains(certainName)) {
-				
-			}
-		}
-		return null;
 	}
 }

@@ -80,23 +80,24 @@ public class DemoMemberController implements DemoFrame{
 					path = "./pojo_mem_login_fail.jsp";//실패페이지
 					demoList = null;
 					status = -1;
-					cm.setCookie("logOnStatus", "-1");//쿠키로 에러코드 넘기기
+					cm.setCookie("logOnStatus", String.valueOf(status));
 					
 				} else if("Passwords do not match".equals(resultOut)){//비밀번호틀림
 					isRedirect = false;//포워딩
 					path = "./pojo_mem_login_fail.jsp";//실패페이지
 					demoList = null;
 					status = -2;
-					cm.setCookie("logOnStatus", "-2");//쿠키로 에러코드 넘기기
+					cm.setCookie("logOnStatus", String.valueOf(status));
 					
-				} else if(resultOut!=null) {//
+				} else if(!"The ID does not exist".equals(resultOut)
+						&&!"Passwords do not match".equals(resultOut)) {//로그인에 성공한 경우
 					isRedirect = true;//리다이텍트
 					path = "./pojo_mem_login_success.jsp";
 					status = 2;
-					cm.setCookie("logOnStatus", "-2");//쿠키로 에러코드 넘기기
+					cm.setCookie("logOnStatus", String.valueOf(status));//로그인 성공
 					cm.setCookie("mem_name",resultOut);//쿠키로 사용자 이름 넘기기
 					
-				} else 
+				} else //기타에러상황
 					logger.info("	[[ Member.C ]] 에러~~에러~~에러~~에러~~에러~~에러~~");
 				
 				setPageCarrier(isRedirect, path, demoList, status);//케리어에 정보세팅
@@ -106,8 +107,15 @@ public class DemoMemberController implements DemoFrame{
 			//URL패턴 : /Basic_Web/5_Framework/pojo/demo/member/select/check_ID_Overlap.demo" ]]
 			else if("check_ID_Overlap.demo".equals(chop)) {
 				logger.info("	[[ Member.C ]] id overlap check :: 아이디 중복검사 조회 시작");
-				String u_id = req.getParameter("mem_id");//요청객체로부터 넘어온 ID 발췌
-				logger.info("	[[ Member.C ]] req.getParameter(\"mem_id\") = "+u_id);
+				String mem_id = req.getParameter("mem_id");//요청객체로부터 넘어온 ID 발췌
+				logger.info("	[[ Member.C ]] req.getParameter(\"mem_id\") = "+mem_id);
+				
+				//암호모듈 적용하기 : Base64
+				sb = new Secure_Base64();//암호모듈 생성
+				String sec_mem_id = sb.changeBase64(mem_id);
+				logger.info("	[[ Member.C ]] sec_mem_id = "+sec_mem_id);
+				
+				demoList = new DemoMemberLogic().memberLogin(pMap);	//Logic계층에 pMap으로 돌려받은 결과값 저장
 				
 				//케리어에 정보세팅
 				isRedirect = true;

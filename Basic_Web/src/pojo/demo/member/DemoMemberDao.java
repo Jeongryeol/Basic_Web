@@ -7,7 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 
 import pojo.demo.DemoAbstractDao;
-import util.db_mybatis.DBConnection_pojoDemo;
+import util.db_mybatis.demo.DBConnection_pojoDemo;
 
 public class DemoMemberDao{
 	Logger logger = Logger.getLogger(DemoMemberDao.class);
@@ -28,8 +28,6 @@ public class DemoMemberDao{
 		//이 경우 NullPointerException이 발생하는 원인이 된다.
 		//따라서 쿼리문이 출력하는 내용이 null일때 를 고려할 것(NVL함수)
 		List<Map<String,Object>> rlist = sqlSes.selectList("memberLogin", pMap);//조회시작
-		String resultOut = rlist.get(0).get("resultOut").toString();//반환값 확인
-		logger.info("		[[ MemberDao ]] resultOut = "+resultOut);
 		return rlist;
 	}
 	
@@ -41,8 +39,8 @@ public class DemoMemberDao{
 	public int memberIdExist(String mem_id) {
 		logger.info("		[[ MemberDao ]] memberIdExist 호출성공 - Dao계층 진입성공!");
 		int status = -2;//초기값
-		status = sqlSes.insert("memberIdExist", mem_id);
-		logger.info("		[[ MemberDao ]] status = "+status+" >> 초기값=-2, 중복=2,없음=-1");
+		status = sqlSes.selectOne("memberIdExist", mem_id);
+		logger.info("		[[ MemberDao ]] sta tus = "+status+" >> 초기값=-2, 중복=2,없음=-1");
 		return status;
 	}
 	

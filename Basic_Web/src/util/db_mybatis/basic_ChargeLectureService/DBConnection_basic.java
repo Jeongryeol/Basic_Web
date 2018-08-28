@@ -1,4 +1,4 @@
-package util.db_mybatis;
+package util.db_mybatis.basic_ChargeLectureService;
 
 import java.io.Reader;
 import java.util.List;
@@ -10,11 +10,11 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.log4j.Logger;
 //MapperConfig.xml에 등록된 DB에 접속하는 정보를 모두 담은 SQL세션을 생성해주는 공통코드
-public class DBConnection {
+public class DBConnection_basic {
 		//로그
-		Logger logger = Logger.getLogger(DBConnection.class);
+		Logger logger = Logger.getLogger(DBConnection_basic.class);
 		//MyBatis
-		String resource = "util/db_mybatis/MapperConfig.xml";//커넥션에 필요한 정보를 담은 xml문서
+		String resource = "util/db_mybatis/basic_ChargeLectureService/MapperConfig_basic.xml";//커넥션에 필요한 정보를 담은 xml문서
 		SqlSessionFactory sqlMapper = null;
 		SqlSession		  sqlSes	= null;
 

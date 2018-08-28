@@ -29,15 +29,16 @@
 		[ ▽ ▽ ▽ [ POJO Framework Controller ] ▽ ▽ ▽ ]
 		■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■		-->
 
-<!-- MemberController.java -> Httpservlet(쿠키와 세션을 생성)
-	  ㄴmemberMgr.do ( URL Mapping )
-	 	로그인 		/member/memberMgr.do?command=memberForm
-		회원가입 		/member/memberMgr.do?command=memberIns
-		회원정보수정 	/member/memberMgr.do?command=memberUpd
-		회원삭제 		/member/memberMgr.do?command=memberDel
-		회원정보조회 	/member/memberMgr.do?command=memberSel
--->
-  <servlet>
+  <servlet><!-- POJO Framework 2차 견본모델 / 개념 간소화 -->
+     <servlet-name>Basic_ChanrgeLecture</servlet-name>
+     <servlet-class>pojo.basic_ChargeLectureService.HeadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+     <servlet-name>Basic_ChanrgeLecture</servlet-name>
+     <url-pattern>*.basic</url-pattern><!-- .basic로 끝나는 모든 요청을 인터셉트 -->
+  </servlet-mapping>
+<!-- ────────────────────────────────────────────────────────── -->
+  <servlet><!-- POJO Framework 최초 실습모델 / 복잡도가 높으므로 열람비추 -->
      <servlet-name>DemoFrontServlet</servlet-name>
      <servlet-class>pojo.demo.DemoFrontController</servlet-class>
   </servlet>
@@ -66,6 +67,15 @@
 		[ ▽ ▽ ▽ [ Servlet URL Pattern Mapping] ▽ ▽ ▽ ]
 		■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■		-->
 
+  <servlet> <!-- 장바구니생성 테스트용 -->
+     <servlet-name>basketTester</servlet-name>
+     <servlet-class>com.jsp.BasketTest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+     <servlet-name>basketTester</servlet-name>
+     <url-pattern>/2_JSP/BasketMgr_sample/test.bsk</url-pattern>
+  </servlet-mapping>
+<!-- ────────────────────────────────────────────────────────── -->
   <servlet> <!-- DAY01 -->
      <servlet-name>first</servlet-name>
      <servlet-class>com.jsp.day01_console_browser.HelloSurvlet</servlet-class>

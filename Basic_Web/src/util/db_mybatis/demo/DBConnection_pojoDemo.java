@@ -1,4 +1,4 @@
-package util.db_mybatis;
+package util.db_mybatis.demo;
 
 import java.io.Reader;
 import java.util.List;
@@ -14,7 +14,7 @@ public class DBConnection_pojoDemo {
 		//로그
 		Logger logger = Logger.getLogger(DBConnection_pojoDemo.class);
 		//MyBatis
-		String resource = "util/db_mybatis/MapperConfig_pojoDemo.xml";//커넥션에 필요한 정보를 담은 xml문서
+		String resource = "util/db_mybatis/demo/MapperConfig_pojoDemo.xml";//커넥션에 필요한 정보를 담은 xml문서
 		SqlSessionFactory sqlMapper = null;
 		SqlSession		  sqlSes	= null;
 

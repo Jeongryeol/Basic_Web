@@ -9,16 +9,16 @@
 			<transactionManager type="JDBC" />
 			<dataSource type="UNPOOLED"><!-- POOL|UNPOOLED -->
 				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
-				<property name="url" value="jdbc:oracle:thin:@192.168.0.234:1521:orcl11" />
-				<property name="username" value="jsp" />
-				<property name="password" value="1234" />
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl11" />
+				<property name="username" value="scott" />
+				<property name="password" value="tiger" />
 			</dataSource>
 		</environment>
 	</environments>
 	<mappers>
 		<!-- src위치는 알기 때문에 이후 경로 씀 / 쿼리문을 담고있는 xml문서의 물리적인 위치 -->
 		<!-- 반드시 경로 및 파일존재확인할것. FileNotFoundException 발생하고 서버기동이 안될수 있음 -->
-		<mapper resource="util/db_mybatis/mapper/pojoDemo/DemoMember.xml"/>
+		<mapper resource="util/db_mybatis/_sample/mapper/SampleQuery.xml"/>
 	</mappers>
 </configuration>
 <!--
